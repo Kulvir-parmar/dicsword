@@ -1,6 +1,6 @@
 import { ClerkProvider, SignedIn, UserButton } from '@clerk/nextjs';
 import { Open_Sans } from 'next/font/google';
-import { Metadata } from 'next';
+import { type Metadata } from 'next';
 import './globals.css';
 
 const OpenSans = Open_Sans({ subsets: ['latin'] });
@@ -15,14 +15,14 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+}): JSX.Element {
   return (
-    <html lang='en'>
+    <html lang="en">
       <ClerkProvider>
         <body className={`${OpenSans.className} min-h-screen flex flex-col`}>
-          <header className='flex items-center h-20 gap-4 px-4'>
+          <header className="flex items-center h-20 gap-4 px-4">
             <SignedIn>
-              <UserButton afterSignOutUrl='/' />
+              <UserButton afterSignOutUrl="/" />
             </SignedIn>
           </header>
           <main>{children}</main>
