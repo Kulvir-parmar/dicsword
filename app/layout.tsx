@@ -4,7 +4,7 @@ import { type Metadata } from 'next';
 import './globals.css';
 // eslint-disable-next-line import/extensions
 import { ThemeProvider } from '@/components/providers/theme-provider';
-import { ModeToggle } from '@/components/mode-toggle';
+import { ModeToggle } from '@/components/ModeToggle';
 import { cn } from '@/lib/utils';
 
 const OpenSans = Open_Sans({ subsets: ['latin'] });
