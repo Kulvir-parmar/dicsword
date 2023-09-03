@@ -1,10 +1,9 @@
-import { ClerkProvider, SignedIn, UserButton } from '@clerk/nextjs';
+import { ClerkProvider } from '@clerk/nextjs';
 import { Open_Sans } from 'next/font/google';
 import { type Metadata } from 'next';
+
 import './globals.css';
-// eslint-disable-next-line import/extensions
 import { ThemeProvider } from '@/components/providers/theme-provider';
-import { ModeToggle } from '@/components/ModeToggle';
 import { cn } from '@/lib/utils';
 
 const OpenSans = Open_Sans({ subsets: ['latin'] });
@@ -35,12 +34,14 @@ export default function RootLayout({
             enableSystem
             storageKey="dick-theme"
           >
-            <header className="flex items-center h-20 gap-4 px-4">
+            {/* This was supposed to be the Navbar of the app but Not needed in dicsword */}
+            {/* <header className="flex items-center h-20 gap-8 px-4">
+              <ModeToggle />
               <SignedIn>
                 <UserButton afterSignOutUrl="/" />
               </SignedIn>
-              <ModeToggle />
-            </header>
+            </header> */}
+
             <main>{children}</main>
           </ThemeProvider>
         </body>

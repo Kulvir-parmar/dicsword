@@ -26,7 +26,7 @@ function FileUpload({ onChange, value, endpoint }: FileUploadProps) {
           className="absolute top-0 right-0 p-1 text-white rounded-full shadow-sm bg-rose-500"
           type="button"
         >
-          <X className="w-4 h-4" />
+          <X className="w-3 h-3" />
         </button>
       </div>
     );
