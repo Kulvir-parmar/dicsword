@@ -1,15 +1,16 @@
 import { redirect } from 'next/navigation';
 import { UserButton } from '@clerk/nextjs';
 
-import CurrentProfile from '@/lib/CurrentProfile';
-import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { ModeToggle } from '@/components/ModeToggle';
+import { Separator } from '@/components/ui/separator';
+import { CurrentProfile } from '@/lib/CurrentProfile';
 import { db } from '@/lib/db';
-import NavigationAction from './NavigationAction';
-import NavigationItem from './NavigationItem';
-import { ModeToggle } from '../ModeToggle';
 
-const NavigationSidebar = async () => {
+import { NavigationAction } from './NavigationAction';
+import { NavigationItem } from './NavigationItem';
+
+export const NavigationSidebar = async () => {
   const profile = await CurrentProfile();
 
   if (!profile) {
@@ -27,9 +28,9 @@ const NavigationSidebar = async () => {
   });
 
   return (
-    <div className="items-center space-y-4 flex-flex-col h-full text-primary w-full dark:bg-[#1E1F22] py-3">
+    <div className="space-y-4 flex flex-col items-center h-full text-primary w-full dark:bg-[#1E1F22] bg-[#E3E5E8] py-3">
       <NavigationAction />
-      <Separator className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-10 mx-auto " />
+      <Separator className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-10 mx-auto" />
       <ScrollArea className="flex-1 w-full">
         {servers.map((server) => (
           <div key={server.id} className="mb-4">
@@ -55,4 +56,3 @@ const NavigationSidebar = async () => {
     </div>
   );
 };
-export default NavigationSidebar;

@@ -1,19 +1,20 @@
-import { currentUser, redirectToSignIn } from '@clerk/nextjs';
-import { Profile } from '@prisma/client';
-import { db } from './db';
+import { currentUser, redirectToSignIn } from "@clerk/nextjs";
 
-// eslint-disable-next-line import/prefer-default-export
-export async function initialProfile(): Promise<Profile | null> {
+import { db } from "@/lib/db";
+
+export const initialProfile = async () => {
   const user = await currentUser();
+
   if (!user) {
     return redirectToSignIn();
   }
 
   const profile = await db.profile.findUnique({
     where: {
-      userId: user.id,
-    },
+      userId: user.id
+    }
   });
+
   if (profile) {
     return profile;
   }
@@ -23,8 +24,9 @@ export async function initialProfile(): Promise<Profile | null> {
       userId: user.id,
       name: `${user.firstName} ${user.lastName}`,
       imageUrl: user.imageUrl,
-      email: user.emailAddresses[0].emailAddress,
-    },
+      email: user.emailAddresses[0].emailAddress
+    }
   });
+
   return newProfile;
-}
+};

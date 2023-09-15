@@ -1,5 +1,3 @@
-/* eslint-disable react/require-default-props */
-
 'use client';
 
 import {
@@ -12,15 +10,20 @@ import {
 interface ActionTooltipProps {
   label: string;
   children: React.ReactNode;
-  side?: 'left' | 'right' | 'top' | 'bottom';
+  side?: 'top' | 'right' | 'bottom' | 'left';
   align?: 'start' | 'center' | 'end';
 }
 
-function ActionTooltip({ label, children, side, align }: ActionTooltipProps) {
+export const ActionTooltip = ({
+  label,
+  children,
+  side,
+  align,
+}: ActionTooltipProps) => {
   return (
     <TooltipProvider>
       <Tooltip delayDuration={50}>
-        <TooltipTrigger>{children}</TooltipTrigger>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
         <TooltipContent side={side} align={align}>
           <p className="text-sm font-semibold capitalize">
             {label.toLowerCase()}
@@ -29,6 +32,4 @@ function ActionTooltip({ label, children, side, align }: ActionTooltipProps) {
       </Tooltip>
     </TooltipProvider>
   );
-}
-
-export default ActionTooltip;
+};

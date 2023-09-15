@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import { NextResponse } from 'next/server';
-import { MEMBER_ROLE } from '@prisma/client';
+import { MemberRole } from '@prisma/client';
 
-import CurrentProfile from '@/lib/CurrentProfile';
+import { CurrentProfile } from '@/lib/CurrentProfile';
 import { db } from '@/lib/db';
 
 // BUG: (Feature maib)For some reason default export api's don't work with NEXT JS
@@ -28,7 +28,7 @@ export async function POST(req: Request) {
           ],
         },
         members: {
-          create: [{ profileId: profile.id, role: MEMBER_ROLE.ADMIN }],
+          create: [{ profileId: profile.id, role: MemberRole.ADMIN }],
         },
       },
     });
