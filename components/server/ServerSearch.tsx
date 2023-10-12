@@ -17,7 +17,7 @@ import { set } from 'zod';
 interface ServerSearchpProps {
   data: {
     label: string;
-    type: 'channel' | 'member';
+    type: 'channel' | 'members';
     data:
       | {
           icon: React.ReactNode;
@@ -49,11 +49,11 @@ export const ServerSearch = ({ data }: ServerSearchpProps) => {
     type,
   }: {
     id: string;
-    type: 'channel' | 'member';
+    type: 'channel' | 'members';
   }) => {
     setOpen(false);
 
-    if (type === 'member') {
+    if (type === 'members') {
       return router.push(`/server/${params?.serverId}/member/${id}`);
     }
     if (type === 'channel') {
