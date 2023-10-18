@@ -37,6 +37,7 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
         url: apiUrl,
         query,
       });
+      await axios.post(url, values);
     } catch (error) {
       console.log(error);
     }
