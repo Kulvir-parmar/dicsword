@@ -75,7 +75,7 @@ const ChatInput = ({ apiUrl, query, name, type }: ChatInputProps) => {
                       className="py-6 border-0 border-none px-14 bg-zinc-200/90 dark:bg-zinc-700/75 focus-visible:ring-0 focus-visible:ring-offset-0 text-zinc-600 dark:text-zinc-200"
                       placeholder={`Message ${
                         type === 'conversation' ? name : '# ' + name
-                      }}`}
+                      }`}
                       {...field}
                     />
                     <div className="absolute top-7 right-8">
