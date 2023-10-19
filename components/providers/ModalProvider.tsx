@@ -9,9 +9,9 @@ import { MembersModal } from '@/components/modals/MemberModal';
 import { CreateChannelModal } from '@/components/modals/CreateChannelModal';
 import { LeaveServerModal } from '@/components/modals/LeaveServerModal';
 import { DeleteServerModal } from '@/components/modals/DeleteServerModal';
-import { Delete } from 'lucide-react';
 import { DeleteChannelModal } from '@/components/modals/DeleteChannelModal';
 import { EditChannelModal } from '@/components/modals/EditChannelModal';
+import { MessageFileModal } from '@/components/modals/MessageFileModal';
 
 export const ModalProvider = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -33,6 +33,7 @@ export const ModalProvider = () => {
       <DeleteServerModal />
       <DeleteChannelModal />
       <EditChannelModal />
+      <MessageFileModal />
     </>
   );
 };

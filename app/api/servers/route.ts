@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         channels: {
           create: [
             { name: 'general', profileId: profile.id, type: 'TEXT' },
-            { name: 'general', profileId: profile.id, type: 'AUDIO' },
+            // { name: 'general', profileId: profile.id, type: 'AUDIO' },
           ],
         },
         members: {
