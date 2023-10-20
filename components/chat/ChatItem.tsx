@@ -9,7 +9,7 @@ import { Member, MemberRole, Profile } from '@prisma/client';
 import { Edit, FileIcon, ShieldAlert, ShieldCheck, Trash } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation'; 
 
 import UserAvatar from '@/components/UserAvatar';
 import { ActionTooltip } from '@/components/ActionTooltip';
