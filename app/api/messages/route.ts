@@ -4,7 +4,7 @@ import { Message } from '@prisma/client';
 import { CurrentProfile } from '@/lib/CurrentProfile';
 import { db } from '@/lib/db';
 
-const MESSAGE_BATCH_SIZE = 10;
+const MESSAGES_BATCH = 10;
 
 export async function GET(req: Request) {
   try {
@@ -26,7 +26,7 @@ export async function GET(req: Request) {
 
     if (cursor) {
       messages = await db.message.findMany({
-        take: MESSAGE_BATCH_SIZE,
+        take: MESSAGES_BATCH,
         skip: 1,
         cursor: {
           id: cursor,
@@ -47,7 +47,7 @@ export async function GET(req: Request) {
       });
     } else {
       messages = await db.message.findMany({
-        take: MESSAGE_BATCH_SIZE,
+        take: MESSAGES_BATCH,
         where: {
           channelId,
         },
@@ -65,8 +65,9 @@ export async function GET(req: Request) {
     }
 
     let nextCursor = null;
-    if (messages.length === MESSAGE_BATCH_SIZE) {
-      nextCursor = messages[MESSAGE_BATCH_SIZE - 1].id;
+
+    if (messages.length === MESSAGES_BATCH) {
+      nextCursor = messages[MESSAGES_BATCH - 1].id;
     }
 
     return NextResponse.json({
@@ -74,7 +75,7 @@ export async function GET(req: Request) {
       nextCursor,
     });
   } catch (error) {
-    console.log('[MESSAGES_ERROR]', error);
+    console.log('[MESSAGES_GET]', error);
     return new NextResponse('Internal Error', { status: 500 });
   }
 }

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
+import { Member, Message, Profile } from '@prisma/client';
 
 import { useSocket } from '@/components/providers/SocketProvider';
-import { Member, Message, Profile } from '@prisma/client';
 
 type ChatSocketProps = {
   addKey: string;
@@ -25,21 +25,28 @@ export const useChatSocket = ({
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    if (!socket) return;
+    if (!socket) {
+      return;
+    }
 
-    socket.on('update', (message: MessageWithMemberWithProfile) => {
+    socket.on(updateKey, (message: MessageWithMemberWithProfile) => {
       queryClient.setQueryData([queryKey], (oldData: any) => {
-        if (!oldData || !oldData.pages || oldData.pages.length === 0)
+        if (!oldData || !oldData.pages || oldData.pages.length === 0) {
           return oldData;
+        }
+
         const newData = oldData.pages.map((page: any) => {
           return {
             ...page,
-            items: page.map((item: MessageWithMemberWithProfile) => {
-              if (item.id === message.id) return message;
+            items: page.items.map((item: MessageWithMemberWithProfile) => {
+              if (item.id === message.id) {
+                return message;
+              }
               return item;
             }),
           };
         });
+
         return {
           ...oldData,
           pages: newData,
@@ -47,7 +54,7 @@ export const useChatSocket = ({
       });
     });
 
-    socket.on('addKey', (message: MessageWithMemberWithProfile) => {
+    socket.on(addKey, (message: MessageWithMemberWithProfile) => {
       queryClient.setQueryData([queryKey], (oldData: any) => {
         if (!oldData || !oldData.pages || oldData.pages.length === 0) {
           return {
@@ -58,20 +65,24 @@ export const useChatSocket = ({
             ],
           };
         }
+
         const newData = [...oldData.pages];
+
         newData[0] = {
           ...newData[0],
           items: [message, ...newData[0].items],
         };
+
         return {
           ...oldData,
           pages: newData,
         };
       });
     });
+
     return () => {
-      socket.off('addKey');
-      socket.off('updateKey');
+      socket.off(addKey);
+      socket.off(updateKey);
     };
-  }, [queryClient, socket, queryKey, addKey, updateKey]);
+  }, [queryClient, addKey, queryKey, socket, updateKey]);
 };
