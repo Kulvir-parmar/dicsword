@@ -23,7 +23,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { ServerWithMemberWithProfile } from '@/types';
+import { ServerWithMembersWithProfile } from '@/types';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   DropdownMenu,
@@ -51,7 +51,7 @@ export const MembersModal = () => {
   const [loadingId, setLoadingId] = useState('');
 
   const isModalOpen = isOpen && type === 'members';
-  const { server } = data as { server: ServerWithMemberWithProfile };
+  const { server } = data as { server: ServerWithMembersWithProfile };
 
   const onKick = async (memberId: string) => {
     try {
