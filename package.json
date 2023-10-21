@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.23.2",
@@ -38,8 +37,6 @@
     "cmdk": "^0.2.0",
     "date-fns": "^2.30.0",
     "emoji-mart": "^5.5.2",
-    "eslint": "8.47.0",
-    "eslint-config-next": "13.4.12",
     "livekit-client": "^1.14.1",
     "livekit-server-sdk": "^1.2.7",
     "lucide-react": "^0.268.0",
