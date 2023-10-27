@@ -1,21 +1,19 @@
 # DICSWORD
 
-![Site screenshot]()
+<video hieght="600px" width="full" controls>
+  <source src="./public/dicsword-working.mov" type="video/mp4">
+</video>
 
-
-This is a repository for Fullstack Discord Clone: Next.js 13, React, Socket.io, Prisma, Tailwind, MySQL | Full Course 2023
+This is a repository for a Discord Clone: <b>DICSWORD</b> a gaming chat application.
 
 
 Features:
 
 - Real-time messaging using Socket.io
-- Member management (Kick, Role change Guest / Moderator)
-- Unique invite link generation & full working invite system
-- Server creation and customization
 - Websocket fallback: Polling with alerts
-- ORM using Prisma
-- MySQL database using Planetscale
 - Authentication with Clerk
+- MySQL database using Planetscale
+- ORM using Prisma
 
 ### Prerequisites
 
