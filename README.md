@@ -1,8 +1,6 @@
 # DICSWORD
 
-<video hieght="600px" width="full" controls>
-  <source src="./public/dicsword-working.mov" type="video/mp4">
-</video>
+<image src="./public/dicsword-working.gif" hieght="600px" width="full" />
 
 This is a repository for a Discord Clone: <b>DICSWORD</b> a gaming chat application.
 
